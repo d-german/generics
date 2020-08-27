@@ -7,8 +7,7 @@ namespace GenericsTests
     {
         private static void Swap<T>(ref T a, ref T b)
         {
-            T temp = a;
-            //var i = (int)a;
+            var temp = a;
             a = b;
             b = temp;
         }
