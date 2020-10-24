@@ -40,10 +40,6 @@ namespace GenericsTests
 
             Assert.AreEqual(10, a);
             Assert.AreEqual("5", b);
-
         }
-
-
-        
     }
 }

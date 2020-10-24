@@ -3,31 +3,35 @@
 namespace GenericsTests
 {
     [TestFixture]
-    public class MotivationGenericMethodsTests //TODO: do this first
+    public class MotivationGenericMethodsTests
     {
         private class ObjectStack
         {
-            int position;
-            object[] data = new object[10];
-            public void Push(object obj) => data[position++] = obj;
-            public object Pop() => data[--position];
+            private int _position;
+            private readonly object[] _data;
+
+            public ObjectStack(int max = 10)
+            {
+                _data = new object[max];
+            }
+
+            public void Push(object obj) => _data[_position++] = obj;
+            public object Pop() => _data[--_position];
         }
 
         [Test]
         public void InvalidCastExceptionTest()
         {
             // Now suppose we want a stack that stores just integers:
-            ObjectStack stack = new ObjectStack();
+            var intStack = new ObjectStack();
 
             // It's easy to make mistakes:
-            stack.Push("s");  // Wrong type, but no error!
+            intStack.Push("s"); // Wrong type, but no error!
 
             Assert.Throws<System.InvalidCastException>(() =>
             {
-                int i = (int)stack.Pop();  // Downcast - runtime error!
+                _ = (int) intStack.Pop(); // Downcast - runtime error!
             });
-            
-            
         }
     }
 }

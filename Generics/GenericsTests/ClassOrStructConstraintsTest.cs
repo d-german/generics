@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace GenericsTests
 {
@@ -19,7 +17,6 @@ namespace GenericsTests
 //            {
 //                return s == t;
 //            }
-
 
             var a = new object();
             var b = a;
@@ -42,17 +39,17 @@ namespace GenericsTests
             Assert.AreEqual("12", OpStringPlusStruct(1, 2));
         }
 
-
         [Test]
         public void OpEqualsStructTest()
         {
             bool OpEqualsStruct<T>(T s, T t) where T : struct //Not all value types overload ==
             {
+                //return s == t;
                 return s.Equals(t);
             }
 
             Assert.IsTrue(OpEqualsStruct(5, 5));
-            //Assert.IsTrue(OpEqualsStruct("s", "s")); // "s" is a reference type
+            // Assert.IsTrue(OpEqualsStruct("s", "s")); // "s" is a reference type
         }
     }
 }

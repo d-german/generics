@@ -10,11 +10,6 @@ namespace GenericsTests
         {
             return a.CompareTo(b) > 0 ? a : b;
         }
-        
-        private static object Max(IComparable a, IComparable b) // Self-referencing interface constraint
-        {
-            return a.CompareTo(b) > 0 ? a : b;
-        }
 
         [Test]
         public void MaxTest()
@@ -26,18 +21,16 @@ namespace GenericsTests
             Assert.AreEqual("zebra", maxAnimal);
         }
 
-
         [Test]
         public void MaxPersonTest()
         {
             var person1 = new Person {FirstName = "John", LastName = "Williams"};
             var person2 = new Person {FirstName = "Neo", LastName = "Anderson"};
 
-            var maxPerson = Max<Person>(person1, person2);
+            var maxPerson = Max(person1, person2);
 
             Assert.AreEqual(person1, maxPerson);
         }
-
 
         private class Person : IComparable<Person>
         {
