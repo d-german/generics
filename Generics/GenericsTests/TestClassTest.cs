@@ -21,10 +21,15 @@ namespace GenericsTests
     [TestFixture]
     public class TestClassTest
     {
+        private static Test BuildTest()
+        {
+            return new Test();
+        }
+
         [Test]
         public void Test()
         {
-            var test = new Test();
+            var test = BuildTest();
             test.SetValue(5);
 
             Assert.AreEqual(5, test.GetValue());
