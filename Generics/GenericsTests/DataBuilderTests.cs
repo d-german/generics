@@ -2,7 +2,7 @@
 
 namespace GenericsTests
 {
-    public class Test
+    public class Data
     {
         private int _value;
 
@@ -18,18 +18,21 @@ namespace GenericsTests
         }
     }
 
+    public static class DataBuilder
+    {
+        public static Data BuildData()
+        {
+            return new Data();
+        }
+    }
+
     [TestFixture]
     public class TestClassTest
     {
-        private static Test BuildTest()
-        {
-            return new Test();
-        }
-
         [Test]
         public void Test()
         {
-            var test = BuildTest();
+            var test = DataBuilder.BuildData();
             test.SetValue(5);
 
             Assert.AreEqual(5, test.GetValue());
