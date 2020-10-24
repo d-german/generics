@@ -6,12 +6,12 @@ namespace GenericsTests
     {
         private int _value;
 
-        public void SetValue(int value)
+        public void SetData(int value)
         {
             _value = value;
         }
 
-        public int GetValue()
+        public int GetData()
         {
             int ret = _value;
             return ret;
@@ -33,9 +33,9 @@ namespace GenericsTests
         public void Test()
         {
             var test = DataBuilder.BuildData();
-            test.SetValue(5);
+            test.SetData(5);
 
-            Assert.AreEqual(5, test.GetValue());
+            Assert.AreEqual(5, test.GetData());
         }
     }
 }
