@@ -11,8 +11,7 @@ namespace GenericsTests
         /// </summary>
         private static void Swap(ref object a, ref object b)
         {
-            object temp = a;
-            //var i = (int)a;
+            var temp = a;
             a = b;
             b = temp;
         }
