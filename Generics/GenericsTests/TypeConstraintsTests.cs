@@ -39,7 +39,7 @@ namespace GenericsTests
 
             public int CompareTo(Person otherPerson)
             {
-                return string.Compare(LastName, otherPerson.LastName, StringComparison.CurrentCulture);
+                return LastName.CompareTo(otherPerson.LastName);
             }
         }
     }
