@@ -2,27 +2,27 @@
 
 namespace GenericsTests
 {
-    public class Data
+    public class Data<T>
     {
-        private int _value;
+        private T _value;
 
-        public void SetData(int value)
+        public void SetData(T value)
         {
             _value = value;
         }
 
-        public int GetData()
+        public T GetData()
         {
-            int ret = _value;
+            T ret = _value;
             return ret;
         }
     }
 
-    public static class DataBuilder
+    public static class DataBuilder<T>
     {
-        public static Data BuildData()
+        public static Data<T> BuildData()
         {
-            return new Data();
+            return new Data<T>();
         }
     }
 
@@ -32,7 +32,7 @@ namespace GenericsTests
         [Test]
         public void Test()
         {
-            var test = DataBuilder.BuildData();
+            var test = DataBuilder<int>.BuildData();
             test.SetData(5);
 
             Assert.AreEqual(5, test.GetData());
