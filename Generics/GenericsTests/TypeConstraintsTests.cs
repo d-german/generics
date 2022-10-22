@@ -35,8 +35,8 @@ namespace GenericsTests
 
         private class Person : IComparable<Person>
         {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
+            public string FirstName { get; init; }
+            public string LastName { get; init; }
 
             public int CompareTo(Person otherPerson)
             {

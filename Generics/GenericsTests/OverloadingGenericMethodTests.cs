@@ -5,17 +5,17 @@ namespace GenericsTests
     [TestFixture]
     public class OverloadingGenericMethodTests
     {
-        public static string GetData<T>(T obj)
+        private static string GetData<T>(T obj)
         {
             return $"INSIDE GetData<T>,{obj.GetType().Name}";
         }
 
-        public static string GetData<T, U>(T obj1, U obj2)
+        private static string GetData<T, U>(T obj1, U obj2)
         {
             return $"INSIDE GetData<T, U>, {obj1.GetType().Name} {obj2.GetType().Name}";
         }
 
-        public static string GetData(int x)
+        private static string GetData(int x)
         {
             return $"INSIDE GetData{x.GetType().Name}";
         }
@@ -23,6 +23,9 @@ namespace GenericsTests
         [Test]
         public void TestMethod1()
         {
+            Assert.AreEqual("INSIDE GetDataInt32", GetData(1));
+            Assert.AreEqual("INSIDE GetData<T>,String", GetData("hello"));
+            Assert.AreEqual("INSIDE GetData<T, U>, Int32 String", GetData(1, "hello"));
         }
     }
 }
